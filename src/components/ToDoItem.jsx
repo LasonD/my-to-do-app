@@ -1,20 +1,19 @@
-import React from "react";
-import { Checkbox, Button } from "antd";
+import React from 'react';
+import { Checkbox, Button } from 'antd';
 
-export const ToDoItem = ({ item, handleCheck, handleRemove }) => {
-    const {checked, name, id} = item;
+export const ToDoItem = ({item, handleCheck, handleRemove}) => {
+    const { checked, name, id } = item;
 
-    const onCheckItem = () => handleCheck(id);
+    const onChangeItem = () => handleCheck(id);
 
     const onRemoveItem = (event) => {
         event.preventDefault();
         handleRemove(id);
     }
-
     return (
-        <li className="todo-item" key={id}>
-            <Checkbox checked={checked}>{name}</Checkbox>
-            <Button>Remove</Button>
+        <li className="todo-item">
+            <Checkbox checked={checked} onChange={onChangeItem}>{name}</Checkbox>
+            <Button onClick={onRemoveItem}>Remove</Button>
         </li>
     );
 }
